@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.beans.User" table="EXAM_ONLINE_USER_TABLE">
+		
+		<id name="Userid" type="java.lang.Integer">
+			<column name="USERID" length="20" />
+			<generator class="sequence">  
+       			 <param name="sequence">USER_TABLE_SEQUENCE</param>  
+  		    </generator>
+		</id>
+		
+		<property name="Username" type="java.lang.String">
+			<column name="USERNAME" length="20"/>
+		</property>
+		<property name="Password" type="java.lang.String">
+			<column name="PASSWORD" length="20"/>
+		</property>
+		
+		<property name="Score" type="java.lang.Integer">
+			<column name="SCORE" length="20"/>
+		</property>
+		
+		<property name="Email" type="java.lang.String">
+			<column name="EMAIL" length="20"/>
+		</property>
+		
+	</class>
+
+</hibernate-mapping>

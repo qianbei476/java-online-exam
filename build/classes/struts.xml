@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+"http://struts.apache.org/dtds/struts-2.5.dtd" >
+
+
+<struts>
+
+ <package name="UserOperation_page" extends="struts-default">
+	<action name="UserLoginLink" class="com.user.operation" method="UserLoginLink">
+		<result name="success">/main.jsp</result>
+		<result name="LOGINBACK">/login.jsp</result>
+	</action>
+	<!--  登录成功，则返回json格式数据，返回数据为status -->
+	
+	<action name="UserPractice" class="com.user.operation" method="UserPractice">
+		<result name="success">/main.jsp</result>
+	</action>
+
+	<action name="UserInfo" class="com.user.operation" method="UserInfo">
+		<result name="success">/userinfo.jsp</result>
+		<result name="LOGINBACK">/login.jsp</result>
+	</action>
+	
+	<action name="UserLogout" class="com.user.operation" method="UserLogout">
+		<result name="success">/login.jsp</result>
+	</action>
+
+</package>
+
+
+<package name="UserOperation_json" extends="json-default">
+	
+	<action name="UserLogin" class="com.user.operation" method="UserLogin">
+		<result name="success" type="json">status</result>
+	</action>
+	
+	<action name="UserRegist" class="com.user.operation" method="UserRegist">
+		<result name="success" type="json">status</result>
+	</action>
+	<!--  注册成功则返回json格式数据，返回数据为status  -->
+	
+	
+	<action name="ConfirmForget" class="com.user.operation" method="ConfirmForget">
+		<result name="success" type="json">status</result>
+	</action>
+	
+	<action name="SetKeyNumber" class="com.user.operation" method="SetKeyNumber">
+		<result name="success" type="json">status</result>
+	</action>
+	
+	<action name="ForgetChange" class="com.user.operation" method="ForgetChange">
+		<result name="success" type="json">status</result>
+	</action>
+	
+</package>
+
+
+</struts>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.beans.Subjectcollection" table="EXAM_ONLINE_COLLECTION_TABLE">
+		
+		<id name="Subjectcollectionid" type="java.lang.Integer">
+			<column name="USERID" length="20" />
+			<generator class="sequence">  
+       			 <param name="sequence">COLLECTION_SEQUENCE</param>  
+  		    </generator>
+		</id>
+		
+		<property name="Userid" type="java.lang.Integer">
+			<column name="SCORE" length="20"/>
+		</property>
+		
+		<property name="Subjectid" type="java.lang.Integer">
+			<column name="SCORE" length="20"/>
+		</property>
+		
+	</class>
+
+</hibernate-mapping>
