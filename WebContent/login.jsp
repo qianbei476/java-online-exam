@@ -13,38 +13,23 @@
 <script src="jquery/jquery-2.1.3.js"></script>
 <script type="text/javascript">
 
-function regist(){
-	window.location.href='regist.jsp';
-};
-
-function forget(){
-	window.location.href='forget.jsp';
-};
-
-(function login_status(){
-	if(('${status.type}'=='login')&&('${status.value}'=='succeed'))
-	{
-	$('#login_title a').html('${status.USERNAME}');
-	}
-	else{
-	$('#login_title a').html('LOGIN');
-	}
-})();
 </script>
 <body>
 <div id="container">
 	<header>
 		<h1>Login</h1>
 	</header>
+<form action="UserLogin" method="get">
 <div>
 username:<input type="text" id="username" name="username">
 <br>
 password:<input type="password" id="password" name="password">
 <br>
-<input type="submit" value="login" id="login">
-<input type="button" value="regist" onclick="regist()">
-<input type="button" value="forget" onclick="forget()">
+<input type="submit" value="login">
+<a href="regist.jsp"><input type="button" value="regist"></a>
+<a href="forget.jsp"><input type="button" value="forget"></a>
 </div>
+</form>
 
 </div>
 
@@ -52,31 +37,10 @@ password:<input type="password" id="password" name="password">
 
 </body>
 <script>
-$('#login').click(function(){
-	
-	$.ajax({
-		url:'UserLogin',
-		dateType:'json',
-		type:'post',
-		data:{
-			username:$('#username').val(),
-			password:$('#password').val()
-		},
-		beforeSend:function(){
-			$('#loadingimg').css('display','block');
-		},
-		success:function(info){
-		//	alert('login succeed!'+info.status.USERNAME);
-		$('#loadingimg').css('display','none');
-		if(info.status.value='succeed'){
-			window.location.href='UserLoginLink';
-		}
-		else{
-			alert('username or password is wrong.');
-			}
-		//	window.location.href='main.jsp';
-		}
-	});
-});
+
+	//	beforeSend:function(){
+	//		$('#loadingimg').css('display','block');
+	//	},
+
 </script>
 </html>
