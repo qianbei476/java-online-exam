@@ -1,27 +1,19 @@
 <%@page import="com.beans.STATUS"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%request.setAttribute("MENU_INDEX", "main");%>
-<%@include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="header.jsp"%>
 <meta charset="utf-8">
 <title>main</title>
 
 
-<script>
-function logUser(){
-	console.log("${status.toString()}");
-}
-	
-	
-
-</script>
 <style>
 
 </style>
 </head>
-<body onload="logUser()">
+<body>
 
 
 <div id="container" class="login_main">
@@ -100,7 +92,7 @@ function logUser(){
 	</ul>
 	</div>
 	<div style="height:40%;width:100%;background:blue;text-align:center;line-height:1.5em">
-	Copyright©2008-2015
+	CopyrightÂ©2008-2015
 	<br>
 	QQ:584854762 QQ:584854762 ICP15021234103
 	</div>
