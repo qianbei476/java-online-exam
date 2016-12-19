@@ -1,116 +1,71 @@
-package com.user;
+package com.beans;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.struts2.ServletActionContext;
-import com.beans.STATUS;
-import com.beans.User;
-import com.dao.UserDao;
-import com.dao.UserDaoImp;
-import com.google.gson.Gson;
-import com.opensymphony.xwork2.ActionSupport;
-
-public class operation extends ActionSupport{
+public class User {
+	private int Userid;
+	private String Username,Password;
+	private String Email;
+	private int Score;
 	
-	private static final long serialVersionUID = 1L;
-	public static String FAILED = "404";
-	private UserDao userDao = new UserDaoImp();
-	HttpSession session = ServletActionContext.getRequest().getSession();
-	
-	public static STATUS status = new STATUS();	//初始化状态 
-	public String GsonToJsonStr(Object obj){
-		Gson gson = new Gson();
-		return gson.toJson(obj);
+	public int getUserid() {
+		return Userid;
+	}
+	public void setUserid(int userid) {
+		Userid = userid;
+	}
+	public String getUsername() {
+		return Username;
+	}
+	public void setUsername(String username) {
+		Username = username;
+	}
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	public int getScore() {
+		return Score;
+	}
+	public void setScore(int score) {
+		Score = score;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	public String toString() {
+		return "User [Userid=" + Userid + ", Username=" + Username
+				+ ", Password=" + Password + ", Email=" + Email + ", Score="
+				+ Score + "]";
+	}
+	public User(String username, String password, String email, int score) {
+		super();
+		Username = username;
+		Password = password;
+		Email = email;
+		Score = score;
+	}
+	public User(int userid, String username, String password, String email,
+			int score) {
+		super();
+		Userid = userid;
+		Username = username;
+		Password = password;
+		Email = email;
+		Score = score;
+	}
+	public User(String username, String password) {
+		super();
+		Username = username;
+		Password = password;
+	}
+	public User() {
+		super();
 	}
 	
-	public void PrintWriterWrite(String Jsonstr) throws IOException{
-		PrintWriter pw = response.getWriter();
-		pw.write(Jsonstr);
-	}
 	
-	HttpServletRequest request = ServletActionContext.getRequest();
-	HttpServletResponse response = ServletActionContext.getResponse();
-	
-	//login===================================================
-	public String UserLogin() throws IOException{	
-		status.setType("login");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		User user = new User(username, password);
-		status.setUSERNAME(username);
-		
-		if(userDao.Userlogin(user)){		
-			status.setValue("succeed");
-			session.setAttribute("USER", user);
-			System.out.println(session.getAttribute("USER"));//test
-		}else {
-			status.setValue("failed");
-			session.removeAttribute("USER");//销毁session
-		}
-		//System.out.println("1"+status.toString());
-//		request.getSession().setAttribute("curUser", user);
-//		ServletActionContext.getContext().getValueStack().push(status);
-//		ActionContext.getContext().put(key, value)
-		//System.out.println(GsonToJsonStr(status));
-		return SUCCESS;
-	}
-	
-	
-	//return json
-	public String ForgetChange(){		//
-		return SUCCESS;
-	}
-	
-	//regist=================================================
-	public String UserRegist() throws IOException{		//
-		status.setType("regist");
-		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String email = request.getParameter("email");
-		User user = new User(username,password,email,0);
-		try{	
-			status.setValue("succeed");
-			userDao.addUser(user);
-			
-		}catch(Exception e){
-			status.setValue("failed");
-		}
-		request.setAttribute("status", status.toString());
-		return SUCCESS;
-	}
-	
-	public String ConfirmForget(){	//
-		return SUCCESS;
-	}
-	
-	public String SetKeyNumber(){
-		return SUCCESS;
-	}
-	
-	public String UserLogout(){
-		status = null;
-		session.removeAttribute("USER");
-		return SUCCESS;
-	}
-	
-	public String UserPractice(){
-		status.setType("practice");
-		return SUCCESS;
-	}
-
-
-//=========================================================	
-	public STATUS getStatus() {
-		return status;
-	}
-	public void setStatus(STATUS status) {
-		this.status = status;
-	}
 	
 }
