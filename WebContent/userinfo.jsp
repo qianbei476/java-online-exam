@@ -16,6 +16,7 @@
 		<h1>UserInfomation</h1>
 	</header>
 	${status.toString()}
+	${session.USER}
 </div>
 
 </body>
