@@ -92,7 +92,7 @@ a:hover,a:visited,a:link,a:active{
 <a href="regist.jsp">REGIST</a>
 </li>
 <li id="login_title" <%="login".equals(menu)?" class=\"current\"":" class=\"others\""%>>
-<a id="login_title_link" href="login.jsp">LOGIN</a>
+<a href="login.jsp">LOGIN</a>
 </li>
 <li id="exit_title">
 <a href="UserLogout">LOGOUT</a>
@@ -129,24 +129,28 @@ a:hover,a:visited,a:link,a:active{
 <script src="jquery/jquery-2.1.3.js"></script>
 <script src="jquery/jquery.transit.js"></script>
 <script>
-(function logstatus(){
-	console.log("${status.toString()}");
-})();
-(function login_status(){
-	if(('${status.type}'==('login')||('${status.type}'=='userinfo')||('${status.type}'=='practice'))&&('${status.value}'=='succeed'))
-	{
-	$('#login_title_link').html('${status.USERNAME}');
-	$('#login_title_link').attr('href','UserInfo');
-	$('#regist_title').hide();
-	$('#exit_title').show();
-	}
+
+function login_status(){
+	if("${session.USER}"==null||"${session.USER}"==""){
+		
+		alert('session is null');
+		$('#login_title_link').html('Login');
+		$('#login_title_link').attr('href','login.jsp');
+		$('#login_title_link').show();
+		$('#exit_title').hide();
+		}
 	else{
-	$('#exit_title').hide();
+		alert('session is ok');
+		$('#login_title a').html('${session.USER.getUsername()}');
+		$('#login_title a').attr('href','userinfo.jsp');
+		$('#login_title a').show();
+		$('#regist_title').hide();
+		$('#exit_title').show();
 	}
-})();
+}
 
-
-
-
+$(document).ready(function(){
+	 login_status();
+});
 
 </script>
