@@ -43,7 +43,5 @@ $('#confirm').click(function(){
 	
 </div>
 
-
-
 </body>
 </html>
