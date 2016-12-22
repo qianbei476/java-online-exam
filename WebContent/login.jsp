@@ -12,14 +12,16 @@
 </head>
 <script src="jquery/jquery-2.1.3.js"></script>
 <script type="text/javascript">
-
+function LoginLoading(){
+	$('#loadingimg').css('display','block');
+}
 </script>
 <body>
 <div id="container">
 	<header>
 		<h1>Login</h1>
 	</header>
-<form action="UserLogin" method="get">
+<form action="UserLogin" method="post" onsubmit="LoginLoading()">
 <div>
 username:<input type="text" id="username" name="username">
 <br>
