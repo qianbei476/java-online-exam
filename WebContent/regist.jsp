@@ -23,7 +23,7 @@ body{
 
 <div id="container">
 	<header>
-		<h1>Login</h1>
+		<h1>Regist</h1>
 	</header>
 		<div>
 			username:<input type="text" id="username">
