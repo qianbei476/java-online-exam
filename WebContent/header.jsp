@@ -202,5 +202,5 @@ function login_status(){
 $(document).ready(function(){
 	login_status();
 });
-
+ 
 </script>
