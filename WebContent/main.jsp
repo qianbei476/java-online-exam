@@ -105,11 +105,10 @@
 	</div>
 	</div>
 	<ul id="child_A">
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
+	<li>news</li>
+	<li>news</li>
+	<li>news</li>
+	<li>news</li>
 	</ul>
 	
 	</div>
@@ -118,14 +117,14 @@
 	
 	<ul id="child_B">
 	<li style="height:20%;line-height:2.5em;font-size:24px;font-weight:bolder;text-align:center;list-style:none;width:100%;margin:0;color:#444444">titleB</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
+	<li>hot</li>
+	<li>hot</li>
+	<li>hot</li>
+	<li>hot</li>
+	<li>hot</li>
+	<li>hot</li>
+	<li>hot</li>
+
 	</ul>
 	
 	</div>
@@ -133,14 +132,13 @@
 	
 	<ul id="child_C">
 	<li style="height:20%;line-height:2.5em;font-size:24px;font-weight:bolder;text-align:center;list-style:none;width:100%;margin:0;color:#444444">titleC</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
-	<li>text</li>
+	<li>personal practice</li>
+	<li>personal practice</li>
+	<li>personal practice</li>
+	<li>personal practice</li>
+	<li>personal practice</li>
+	<li>personal practice</li>
+	<li>personal practice</li>
 	</ul>
 	
 	</div>
@@ -160,7 +158,6 @@
 	<li>text</li>
 	<li>text</li>
 	<li>text</li>
-	<li>text</li>
 	</ul>
 	
 	</div>
@@ -176,7 +173,6 @@
 	<li>text</li>
 	<li>text</li>
 	<li>text</li>
-	<li>text</li>
 	</ul>
 	
 	</div>
@@ -185,7 +181,6 @@
 	<ul id="child_D">
 	<li style="height:20%;line-height:2.5em;font-size:24px;font-weight:bolder;text-align:center;list-style:none;width:100%;margin:0;color:#444444">
 	titleD</li>
-	<li>text</li>
 	<li>text</li>
 	<li>text</li>
 	<li>text</li>
@@ -201,7 +196,6 @@
 	<ul id="child_D">
 	<li style="height:20%;line-height:2.5em;font-size:24px;font-weight:bolder;text-align:center;list-style:none;width:100%;margin:0;color:#444444">
 	titleD</li>
-	<li>text</li>
 	<li>text</li>
 	<li>text</li>
 	<li>text</li>
@@ -374,16 +368,27 @@ var child_left = parseInt($('#child_imgs').css('left'));
 var timeTap = setInterval(function(){
 	$('#child_imgs').animate({
 		left:-child_left-$('#child_imgs .child_img').width()
-	},500);
+	},200);
 	child_left = parseInt($('#child_imgs').css('left'));
-},1500);
+},1000);
 
 $('#child_ul li').click(function(){
 	var li_index = $(this).index();
-	
+	if(li_index!=0){
+	clearInterval(timeTap);
+	$('#child_imgs').css('left',0);
+	}
+	else{
+		timeTap = setInterval(function(){
+			$('#child_imgs').animate({
+				left:-child_left-$('#child_imgs .child_img').width()
+			},200);
+			child_left = parseInt($('#child_imgs').css('left'));
+		},1000);
+	}
 	$('#child_scroll').animate({
 		left:$(document.body).width()*0.8*0.25*li_index
-	},200);
+	},300);
 	if(temp!=li_index){
 	$('#child_tab_menu .li_menu').hide();
 	$('#child_tab_menu .li_menu:eq('+li_index+')').fadeIn();
@@ -394,7 +399,7 @@ $('#young_ul li').click(function(){
 	var li_index = $(this).index();
 	$('#young_scroll').animate({
 		left:$(document.body).width()*0.8*0.25*li_index
-	},200);
+	},300);
 	if(temp!=li_index){
 	$('#young_tab_menu .li_menu').hide();
 	$('#young_tab_menu .li_menu:eq('+li_index+')').fadeIn();
