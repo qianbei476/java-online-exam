@@ -26,7 +26,7 @@ public class operation extends ActionSupport{
 	public String GsonToJsonStr(Object obj){
 		Gson gson = new Gson();
 		return gson.toJson(obj);
-	}
+	}     
 	
 	public void PrintWriterWrite(String Jsonstr) throws IOException{
 		PrintWriter pw = response.getWriter();
